@@ -6,8 +6,6 @@
   <meta name="description" content="Mingyang Li, Research Assistant Professor at the Simons Center for Geometry and Physics. Research in differential geometry, Einstein metrics, and gravitational instantons.">
   <meta name="author" content="Mingyang Li">
   <title>Mingyang Li | Differential Geometry</title>
-  <link rel="preload" href="assets/fonts/source-sans-3-400-600.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="assets/fonts/source-serif-4-400-600.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="styles.css">
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='8' fill='%23185c8c'/%3E%3Ctext x='32' y='44' text-anchor='middle' font-family='Georgia,serif' font-size='34' fill='white'%3EML%3C/text%3E%3C/svg%3E">
   <!-- MathJax setup. Write $...$ for inline math and $$...$$ for displayed math. -->
@@ -22,6 +20,7 @@
     };
   </script>
   <script defer src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js"></script>
+  <script defer src="site.js"></script>
 </head>
 <body>
   <a class="skip-link" href="#research">Skip to research</a>
@@ -49,77 +48,91 @@
           <a href="mailto:mmingyang.li@gmail.com">mmingyang.li@gmail.com</a><br>
           <span class="office">Office: SCGP 510</span>
         </div>
+        <p class="profile-news"><span class="new-label">New</span> <a href="https://arxiv.org/abs/2610.10425">Compact toric Einstein four-manifolds</a></p>
       </div>
-      <img class="portrait" src="assets/portrait.jpg" alt="Mingyang Li" width="1280" height="719">
+      <img class="portrait" src="assets/portrait.jpg" alt="Mingyang Li" width="6000" height="4000">
     </header>
 
     <main id="research">
-      <h2>Research</h2>
+      <div class="section-heading">
+        <h2>Research</h2>
+        <button class="details-control" type="button" id="toggle-paper-details" hidden>Expand all details</button>
+      </div>
       <p class="research-intro">I am interested in differential geometry, particularly Einstein metrics and gravitational instantons.</p>
 
-      <!-- Each article is one paper. The short description stays visible; details are expandable. -->
-      <article class="paper featured" id="compact-toric-einstein">
-        <p class="eyebrow">Latest work</p>
-        <h3><a href="https://arxiv.org/abs/2610.10425">Compact toric Einstein four-manifolds</a></h3>
-        <p class="metadata">With Song Sun · 2026 · 136 pages · Preprint</p>
-        <p>Our latest work gives a complete diffeomorphism classification of compact, simply connected four-manifolds admitting positive toric Einstein metrics. The proof combines a detailed study of moduli spaces of conical Einstein metrics with a global boundary-counting argument.</p>
-        <div class="criterion">$$\chi(X) \geq 3|\tau(X)|.$$</div>
-        <details>
-          <summary><span class="toggle-icon" aria-hidden="true"></span><span class="label-closed">About this paper</span><span class="label-open">Close explanation</span></summary>
+      <!-- Each list item contains one paper. Keep the short introduction outside details. -->
+      <ol class="publication-list">
+        <li>
+      <article class="paper" id="compact-toric-einstein">
+        <h3><a href="https://arxiv.org/abs/2610.10425">Compact toric Einstein four-manifolds</a> <span class="new-label">New</span></h3>
+        <p class="metadata">With Song Sun · 2026 · 152 pages · Preprint · Revised November 4, 2026 <span class="paper-links">· <a href="papers/compact-toric-einstein.pdf">PDF</a></span></p>
+        <p>We give a complete diffeomorphism classification of compact, simply connected four-manifolds admitting positive toric Einstein metrics, using conical Einstein moduli spaces and a virtual boundary-counting argument. The revised paper also proves smooth compactness for normalized toric Einstein metrics with bounded Euler characteristic.</p>
+        <details id="details-compact-toric-einstein">
+          <summary><span class="toggle-icon" aria-hidden="true"></span><span class="label-closed">Details</span><span class="label-open">Hide details</span></summary>
           <div class="explanation">
+            <div class="criterion">$$\chi(X) \geq 3|\tau(X)|.$$</div>
             <p>A closed, simply connected smooth four-manifold $X$ admitting an effective $T^2$-action carries a positive toric Einstein metric if and only if the inequality above holds. Here $\chi$ is the Euler characteristic and $\tau$ is the signature. The torus action preserving the metric may differ from the initially given action. In particular, we construct positive Einstein metrics on every connected sum $\#_r(S^2\times S^2)$, giving examples with arbitrarily large second Betti number.</p>
             <p>The main idea is to allow conical singularities along selected torus-invariant two-spheres. Varying their common cone angle $2\pi\beta$ gives a moduli problem of virtual dimension one. We construct ends of this space by gluing conical, asymptotically Euclidean gravitational instantons into known compact Einstein manifolds at torus fixed points. Carefully chosen torus actions and compactness estimates control the possible degenerations. A virtual boundary-counting argument then forces the existence of metrics with cone angle $2\pi$, where the singularities disappear. This approach is inspired by moduli-space methods in Donaldson theory.</p>
             <p>We also establish rigidity when $b_+\leq 1$: for a fixed orientation, a toric Einstein metric is anti-self-dual when $b_+=0$ and conformally Kähler when $b_+=1$. Together with classical classification results, this gives uniqueness of toric Einstein metrics up to scaling and isometry on $S^4$, $S^2\times S^2$, and $\CP^2\#k\overline{\CP}^{2}$ for $0\leq k\leq 3$. Our construction recovers all six classical toric Einstein metrics, including the Page and Chen–LeBrun–Weber metrics, starting from the round sphere.</p>
-            <p class="ai-note">The project was developed with substantial AI assistance, particularly in finding the differential inequalities underlying the compactness and noncollapsing analysis and the curvature identities used in the rigidity and uniqueness arguments. The central strategy, studying moduli spaces of toric conical Einstein metrics and applying a virtual boundary-counting argument, originated entirely with the authors, inspired by gauge-theoretic moduli-space methods, especially compactness and boundary counts in Donaldson theory. The authors also designed the rod structures for the initial existence results and formulated the conjectured diffeomorphism classification. At the authors’ request, building on a mild extension of our strategy and results established earlier in the project, AI then developed the entire proof of the extension to the full classification. The paper includes a detailed account of these contributions.</p>
+            <p>We also prove a general smooth compactness theorem: for each $N>0$, the moduli space of simply connected compact toric Einstein four-manifolds satisfying $\operatorname{Ric}(g)=3g$ and $\chi(X)\leq N$ is compact in the smooth topology modulo diffeomorphisms. In particular, normalized toric Einstein metrics with any fixed compact rod structure form a compact moduli space. Together with our counting construction, this defines a virtual count modulo two for every compact rod structure.</p>
+            <p class="ai-note">The project was developed with substantial AI assistance, particularly in finding the differential inequalities underlying the compactness and noncollapsing analysis and the curvature identities used in the rigidity and uniqueness arguments. The central strategy, studying moduli spaces of toric conical Einstein metrics and applying a virtual boundary-counting argument, originated entirely with the authors, inspired by gauge-theoretic moduli-space methods, especially compactness and boundary counts in Donaldson theory. The authors also designed the rod structures for the initial existence results and formulated the conjectured diffeomorphism classification. At the authors’ request, AI developed in full the proofs of the extension to the complete diffeomorphism classification and the general smooth compactness theorem, building on the strategy and results established earlier in the project. The paper includes a detailed account of these contributions.</p>
           </div>
         </details>
       </article>
+        </li>
 
+        <li>
       <article class="paper" id="geometry-gravitational-instantons">
         <h3><a href="https://arxiv.org/abs/2606.10443">Geometry of gravitational instantons</a></h3>
         <p class="metadata">With Song Sun · 2026 · 51 pages · Survey<br>To appear in <em>Surveys in Differential Geometry</em></p>
         <p>A survey of recent progress and open problems in the geometry of gravitational instantons.</p>
-        <details>
-          <summary><span class="toggle-icon" aria-hidden="true"></span><span class="label-closed">About this paper</span><span class="label-open">Close explanation</span></summary>
+        <details id="details-geometry-gravitational-instantons">
+          <summary><span class="toggle-icon" aria-hidden="true"></span><span class="label-closed">Details</span><span class="label-open">Hide details</span></summary>
           <div class="explanation">
             <p>We review the classification of hyperkähler and Hermitian gravitational instantons, describe the role of different asymptotic geometries, and explain our recent constructions of non-Hermitian examples via harmonic maps.</p>
             <p>A main purpose of the article is to formulate a coherent set of open problems. These concern the classification of gravitational instantons beyond the hyperkähler and Hermitian settings, the possible asymptotic models and collapse structures at infinity, and the role of gravitational instantons as local models for degeneration and singularity formation in Einstein geometry.</p>
           </div>
         </details>
       </article>
+        </li>
 
+        <li>
       <article class="paper" id="poincare-einstein-cusps">
         <h3><a href="https://arxiv.org/abs/2605.25462">Poincaré–Einstein 4-manifolds with cusps</a></h3>
         <p class="metadata">With <a href="https://sites.google.com/view/hongyiliu/home">Hongyi Liu</a> · 2026 · 35 pages · Preprint</p>
         <p>New families of complete negative Einstein four-manifolds with a Poincaré–Einstein end and a cusp end.</p>
-        <details>
-          <summary><span class="toggle-icon" aria-hidden="true"></span><span class="label-closed">About this paper</span><span class="label-open">Close explanation</span></summary>
+        <details id="details-poincare-einstein-cusps">
+          <summary><span class="toggle-icon" aria-hidden="true"></span><span class="label-closed">Details</span><span class="label-open">Hide details</span></summary>
           <div class="explanation">
             <p>The cusp ends include real hyperbolic cusps, complex hyperbolic cusps, and cusps fibered over hyperbolic surfaces. Passing to universal covers produces new complete negative Einstein metrics on $\R^4$. The construction also yields degeneration examples of Poincaré–Einstein four-manifolds with fixed conformal infinity.</p>
             <p>These examples give a negative answer to a question of Anderson concerning whether cusp formation in Poincaré–Einstein four-manifolds must have a hyperbolic limit.</p>
           </div>
         </details>
       </article>
+        </li>
 
+        <li>
       <article class="paper" id="poincare-einstein-kahler">
         <h3><a href="https://arxiv.org/abs/2510.04928">Poincaré–Einstein 4-manifolds with conformally Kähler geometry</a></h3>
         <p class="metadata">With <a href="https://sites.google.com/view/hongyiliu/home">Hongyi Liu</a> · 2025 · 32 pages · Preprint</p>
         <p>A non-perturbative construction of infinite-dimensional families of Poincaré–Einstein manifolds through conformally Kähler geometry.</p>
-        <details>
-          <summary><span class="toggle-icon" aria-hidden="true"></span><span class="label-closed">About this paper</span><span class="label-open">Close explanation</span></summary>
+        <details id="details-poincare-einstein-kahler">
+          <summary><span class="toggle-icon" aria-hidden="true"></span><span class="label-closed">Details</span><span class="label-open">Hide details</span></summary>
           <div class="explanation">
             <p>We study Poincaré–Einstein four-manifolds whose conformal class contains a Kähler metric. Such manifolds are either anti-self-dual or have repeated eigenvalues of the self-dual Weyl curvature. They always admit a symmetry, and the Einstein equation reduces to a Toda-type equation.</p>
             <p>We formulate a nonlinear Dirichlet boundary value problem and establish existence and uniqueness results, obtaining infinite-dimensional families whose underlying spaces are complex line bundles over Riemann surfaces of positive genus. The main analytic difficulty is the degeneracy of the equation along the inner boundary.</p>
           </div>
         </details>
       </article>
+        </li>
 
+        <li>
       <article class="paper" id="gravitational-instantons-harmonic-maps">
         <h3><a href="https://arxiv.org/abs/2507.15284">Gravitational instantons and harmonic maps</a></h3>
         <p class="metadata">With Song Sun · 2025 · 81 pages · Preprint</p>
         <p>Infinitely many new asymptotically flat gravitational instantons with arbitrarily large second Betti number.</p>
-        <details>
-          <summary><span class="toggle-icon" aria-hidden="true"></span><span class="label-closed">About this paper</span><span class="label-open">Close explanation</span></summary>
+        <details id="details-gravitational-instantons-harmonic-maps">
+          <summary><span class="toggle-icon" aria-hidden="true"></span><span class="label-closed">Details</span><span class="label-open">Hide details</span></summary>
           <div class="explanation">
             <p>The toric Ricci-flat equation reduces to an axisymmetric harmonic map equation with target the hyperbolic plane $\mathbb{H}^2$. A central difficulty in constructing gravitational instantons by this method is eliminating conical singularities.</p>
             <p>By designing suitable underlying topological spaces and carrying out a delicate bubbling analysis, we eliminate the conical singularities and construct infinitely many new asymptotically flat, simply connected gravitational instantons. Their asymptotic models are quotients of $\R^4$ by isometric $\mathbb{Z}$-actions. The construction recovers the Kerr and Chen–Teo gravitational instantons and produces new examples of the generic Weyl-curvature type.</p>
@@ -127,45 +140,54 @@
           </div>
         </details>
       </article>
+        </li>
 
+        <li>
       <article class="paper" id="asymptotically-flat">
         <h3><a href="https://doi.org/10.4208/jms.v58n2.25.05">On conical asymptotically flat manifolds</a></h3>
         <p class="metadata">With Song Sun · 2025<br><em>Journal of Mathematical Study</em> 58(2), 188–210 <span class="paper-links">· <a href="https://arxiv.org/abs/2410.11168">arXiv</a></span></p>
         <p>A result on collapsing geometry that confirms a conjecture of Petrunin–Tuschmann.</p>
-        <details>
-          <summary><span class="toggle-icon" aria-hidden="true"></span><span class="label-closed">About this paper</span><span class="label-open">Close explanation</span></summary>
+        <details id="details-asymptotically-flat">
+          <summary><span class="toggle-icon" aria-hidden="true"></span><span class="label-closed">Details</span><span class="label-open">Hide details</span></summary>
           <div class="explanation">
             <p><a href="https://arxiv.org/abs/1607.06257">Petrunin–Tuschmann</a> proved that an asymptotically flat four-manifold with a simply connected end and a unique asymptotic cone that is a metric cone can have asymptotic cone only $\R^4$, $\R^3$, or a half-plane. We prove that the half-plane cannot occur.</p>
             <p>Together with previous work of Chen–Li, this implies that a Ricci-flat metric on $\R^4$ with faster than quadratic curvature decay must be either the flat metric or the Taub–NUT metric.</p>
           </div>
         </details>
       </article>
+        </li>
 
+        <li>
       <article class="paper" id="conformally-kahler-instantons">
         <h3><a href="https://arxiv.org/abs/2310.13197">Classification results for conformally Kähler gravitational instantons</a></h3>
         <p class="metadata">2023 · 42 pages · Preprint <span class="paper-links">· <a href="papers/conformally-kahler-gravitational-instanton.pdf">Submitted version</a></span></p>
         <p>Asymptotic geometry and classification results for Hermitian, non-Kähler Ricci-flat four-manifolds.</p>
-        <details>
-          <summary><span class="toggle-icon" aria-hidden="true"></span><span class="label-closed">About this paper</span><span class="label-open">Close explanation</span></summary>
+        <details id="details-conformally-kahler-instantons">
+          <summary><span class="toggle-icon" aria-hidden="true"></span><span class="label-closed">Details</span><span class="label-open">Hide details</span></summary>
           <div class="explanation">
             <p>We study the asymptotic geometry of Type II Ricci-flat metrics. On an end with finite $L^2$ curvature, such a metric is asymptotic to one of five families of models: ALE, ALF, AF, skewed special Kasner, or ALH*, or a further finite quotient.</p>
             <p>We also classify Type II gravitational instantons with non-Euclidean volume growth, answering a conjecture of Aksteiner–Andersson. The submitted version linked above corrects some imprecision in the arXiv version.</p>
           </div>
         </details>
       </article>
+        </li>
 
+        <li>
       <article class="paper" id="ale-ricci-flat">
         <h3><a href="https://arxiv.org/abs/2304.01609">On 4-dimensional Ricci-flat ALE manifolds</a></h3>
         <p class="metadata">2023 · 46 pages · Preprint</p>
         <p>A correspondence between Type II ALE gravitational instantons and certain Bach-flat Kähler orbifolds.</p>
-        <details>
-          <summary><span class="toggle-icon" aria-hidden="true"></span><span class="label-closed">About this paper</span><span class="label-open">Close explanation</span></summary>
+        <details id="details-ale-ricci-flat">
+          <summary><span class="toggle-icon" aria-hidden="true"></span><span class="label-closed">Details</span><span class="label-open">Hide details</span></summary>
           <div class="explanation">
             <p>We prove that Type II ALE gravitational instantons correspond to a special class of Bach-flat Kähler orbifolds. We also show that no Type II ALE gravitational instanton has its group at infinity contained in $\mathrm{SU}(2)$.</p>
             <p>This is related to the conjecture of Bando–Kasue–Nakajima that every ALE gravitational instanton is of Type I, that is, locally hyperkähler in the Ricci-flat setting.</p>
           </div>
         </details>
       </article>
+        </li>
+
+      </ol>
 
       <details class="background">
         <summary>Background: Weyl curvature and gravitational instantons</summary>
@@ -178,7 +200,7 @@
 
     <footer>
       <p>I am grateful for support from the <a href="https://sites.duke.edu/scshgap/">Simons Collaboration on Special Holonomy in Geometry, Analysis, and Physics</a> and <a href="http://www.iasm.zju.edu.cn/iasm/main.htm">IASM, Zhejiang University</a>.</p>
-      <p>Last updated: October 2026.</p>
+      <p>Last updated: November 2026.</p>
     </footer>
   </div>
 </body>

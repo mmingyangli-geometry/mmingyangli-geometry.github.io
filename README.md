@@ -1,83 +1,75 @@
-# Mingyang Li — GitHub homepage
+# Mingyang Li — academic homepage
 
-An academic website with Research, Talks, Teaching, and Résumé pages, LaTeX formulas, and expandable paper descriptions. It uses ordinary HTML, CSS, and MathJax. There is no build step and no software to install.
+This revision starts from the public GitHub repository downloaded on November 8, 2026. It uses ordinary HTML, CSS, a small disclosure-control script, and MathJax. There is no build step.
 
-## Publish on GitHub Pages
+The design uses plain Arial/Helvetica typography, compact numbered paper entries, simple expandable explanations, and a dark left navigation column. On small screens, navigation moves to the top. The newest paper appears beneath the contact information and in the research list, marked with a small colored “New” label. The revision preserves the current repository content and adds the November 4 paper update and recent talk history. The larger photograph uses the original 6000 × 4000 image supplied on November 8, displayed at its natural 3:2 aspect ratio without cropping.
 
-1. Sign in at https://github.com. Create a **public** repository named `mmingyangli-geometry.github.io`.
-2. Upload the **contents of this folder** into the repository: `index.html`, `talks.html`, `teaching.html`, `resume.html`, `styles.css`, and the complete `assets` folder. Upload `.nojekyll` too if your file picker shows hidden files. The homepage must be `index.html` at the repository root, not inside another folder. You can use **Add file → Upload files** on GitHub. A ZIP file by itself will not create the website; unzip it first.
-3. In the repository, open **Settings → Pages**. Under **Build and deployment**, choose **Deploy from a branch**, then select **main** and **/(root)**. Click **Save**.
-4. Wait for GitHub to finish publishing. The Pages settings screen will show the published URL: `https://mmingyangli-geometry.github.io/`.
+## Preview
 
-If a repository with that name already exists, keep its current contents backed up and integrate this draft into that site instead of replacing files blindly.
+Open `index.html` in a browser while connected to the internet. MathJax loads from jsDelivr. You can also serve the folder locally with `python3 -m http.server 8766` and visit `http://localhost:8766/`.
 
-Official instructions: https://docs.github.com/en/pages/quickstart
+## Update the existing GitHub website
 
-## Edit your homepage
+In the `mmingyangli-geometry/mmingyangli-geometry.github.io` repository, choose **Add file → Upload files**. Upload these files from inside this folder:
 
-Open `index.html` in your GitHub repository, click the pencil icon, edit the text, and choose **Commit changes**. GitHub Pages will publish the update automatically. You can also edit the file on your computer in any text editor and upload the revised file.
+- `index.html`
+- `talks.html`
+- `teaching.html`
+- `resume.html`
+- `styles.css`
+- `site.js` (new)
+- `assets/portrait.jpg` (replaced with the original photograph)
+- `papers/compact-toric-einstein.pdf` (updated to the 152-page arXiv v2)
 
-- Biography and contact details are near the top of `index.html`, inside `<header class="profile">`.
-- Talks are in `talks.html`, teaching is in `teaching.html`, and the text résumé is in `resume.html`.
-- The navigation bar is repeated near the top of each HTML file. If you change a tab name or add a page, update that bar in all four files.
-- If you add a paper, also add it to the publication list in `resume.html`.
-- Each paper is an `<article class="paper">` section. Copy one complete article to add a paper.
-- Put the short introduction outside `<details>` and the longer explanation inside it.
-- Paper links use `<a href="https://...">Paper title</a>`.
-- Your portrait is `assets/portrait.jpg`.
-- Appearance, spacing, and mobile layout are in `styles.css`.
-- The site uses Source Sans 3 for text and Source Serif 4 for headings. The font files and their open-source licenses are in `assets/fonts/`. The fonts are served by your website, without a Google Fonts request.
+Upload `README.md` as well if you want these instructions in the repository. Commit to the existing publishing branch, `main`. GitHub Pages will use your existing Pages settings.
 
-Keep the HTML tags around the text. In ordinary HTML text, write `&lt;` for a less-than sign and `&amp;` for an ampersand. Within mathematics, use LaTeX commands such as `\lt` rather than a literal less-than sign.
+Keep the files at the repository root, preserving the `assets/` and `papers/` subfolders. Do not upload the ZIP itself or an extra enclosing `github-homepage-revised` folder. Replace `assets/portrait.jpg` and `papers/compact-toric-einstein.pdf` with the updated copies in this package. Keep the existing font assets and the other paper PDF. Complete copies of all required files are included for a self-contained preview or fresh installation.
 
-## Write mathematics
+If you have changed the online website since November 8, 2026, merge those changes before replacing files.
 
-Inline math uses single dollar signs:
+## Edit content
 
-```html
-The self-dual Weyl curvature is $W^+$, and the second Betti number is $b_2$.
-```
+| Content | File |
+| --- | --- |
+| Biography, research papers, descriptions | `index.html` |
+| Talks and recordings | `talks.html` |
+| Teaching | `teaching.html` |
+| Text résumé | `resume.html` |
+| Font sizes, spacing, colors, mobile layout | `styles.css` |
+| Expand/collapse all paper details | `site.js` |
+| Photograph | `assets/portrait.jpg` |
+| Paper PDFs | `papers/` |
 
-Displayed math uses double dollar signs:
+Each paper in `index.html` is an `<article class="paper">` inside an `<li>`. Copy a complete `<li>…</li>` entry to add a paper, and give the article and its `<details>` element unique IDs. Keep the short introduction outside `<details>` and the longer text inside `.explanation`. Add the paper to the résumé publication list as well.
 
-```html
-<div class="criterion">
-  $$\chi(X) \geq 3|\tau(X)|.$$
-</div>
-```
+The first paper's title links to arXiv; its separate PDF link opens `papers/compact-toric-einstein.pdf`. Replace a PDF with the same filename to update it without changing links.
 
-An expandable explanation looks like this:
+Inline mathematics uses `$...$`; display mathematics uses `$$...$$`. For example:
 
 ```html
-<p>A short introduction to the paper.</p>
-<details>
-  <summary>About this paper</summary>
-  <div class="explanation">
-    <p>The detailed explanation goes here, with inline math such as $T^2$.</p>
-    $$\operatorname{Ric}(g)=\lambda g.$$
-  </div>
-</details>
+<p>We consider a cone angle $2\pi\beta$.</p>
+$$\chi(X) \geq 3|\tau(X)|.$$
 ```
 
-MathJax is configured near the top of `index.html`. It recognizes `$...$`, `$$...$$`, `\(...\)`, and `\[...\]`. It also defines the convenience macros `\R` and `\CP`. Custom macros can be added to the same configuration. Backslashes in JavaScript macro definitions must be doubled; backslashes in the HTML mathematical text are written normally.
+To mark a newly added paper, put `<span class="new-label">New</span>` after its title link, inside the heading. Remove this small label when the paper is no longer recent.
 
-MathJax and its fonts load from jsDelivr, so formulas require an internet connection. The biography, links, and expandable sections work without JavaScript. If you later prefer all assets to be self-hosted, MathJax can be downloaded and included in this repository.
+The introduction also has a `.profile-news` paragraph beneath the contact information. Update its title and link when you want to highlight a different paper.
 
-MathJax documentation: https://docs.mathjax.org/en/latest/web/start.html
+Native `<details>` controls work without JavaScript. The optional `site.js` adds an expand/collapse-all control. The main navigation is repeated in the four HTML files, so update all four if you change a tab.
 
-## Preview before publishing
+The earlier Source Sans and Source Serif assets and licenses are retained for compatibility, but this design uses system fonts and does not load those files.
 
-Double-click `index.html` to open it in a browser while connected to the internet. Click **About this paper** beneath a paper to expand its description.
+## November 2026 content updates
 
-## Content sources
+- Compact toric Einstein four-manifolds: 152-page arXiv v2, November 4, 2026. The expanded description includes smooth compactness for normalized metrics with bounded Euler characteristic and the corresponding updated AI attribution. Source: https://arxiv.org/abs/2610.10425v2
+- The hosted toric paper PDF is replaced with this version. Its URL remains the same.
+- Stony Brook (October 27), McMaster (October 29), and Duke (November 2) are in the past-talk list. Both Talks and Résumé now contain the same 38 previous entries.
+- Talk histories show the seminar or event name first, followed by the institution or location on the next line. Talk recordings retain their descriptive titles.
+- Vanderbilt remains upcoming, with the workshop dates November 14–15; an individual speaking date is not asserted.
 
-The biography, portrait, contact details, and existing publication links were carried over from https://sites.google.com/view/mingyangli on October 7, 2026. Research descriptions were lightly edited for readability and mathematical typography. The new toric Einstein paper summary follows the manuscript and wording discussed in this chat. The new Talks, Teaching, and Résumé pages combine the live Google Sites pages with the résumé PDF embedded there. The résumé is ordinary HTML text, not a PDF attachment. Talk lists include 34 previous presentations (merging both sources), three upcoming events, and two recordings. Course names and the Spring 2026 coordinator role come from the résumé. The new toric Einstein paper is included in both Research and Résumé. The published title and citation of On conical asymptotically flat manifolds were checked against the publisher record: https://www.global-sci.com/jms/article/view/13502. The primary email link was made consistent with the address displayed on the homepage and in the supplied manuscript.
+Talk sources:
 
-This folder is a prepared draft. Creating these files does not publish a website or change the existing Google Site.
-
-Additional migration sources:
-
-- https://sites.google.com/view/mingyangli/talks
-- https://sites.google.com/view/mingyangli/teaching
-- https://sites.google.com/view/mingyangli/resume
-- https://drive.google.com/file/d/1nuoIItp3XBHLcXCD5-vslqMkAXdD_UOG/view
+- https://www.math.stonybrook.edu/cal/agenda.php?LocationID=103
+- https://math.mcmaster.ca/events/geometry-topology-seminar-mingyang-li-stony-brook/
+- https://math.duke.edu/events/moduli-spaces-and-classification-toric-einstein-four-manifolds
+- https://as.vanderbilt.edu/math/2026/09/27/shanks-workshop-facets-of-complex-differential-geometry/
